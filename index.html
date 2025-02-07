@@ -10,25 +10,25 @@
       margin: 0;
       height: 100vh;
       background-image: url('images/back.jpg');
-      background-size: 100% 100%;
+      background-size: cover; /* Ensure background covers screen */
       background-position: center;
+      background-repeat: no-repeat; /* Ensure background does not repeat */
       position: relative;
       overflow: hidden; /* Hide anything that goes outside the viewport */
     }
 
     .animated-text {
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  color: rgba(0, 0, 0, 0.904);
-  text-align: center;
-  animation: slideIn 5s ease-out;
-
-  /* Add shadow to the text */
-  text-shadow: 3px 3px 5px rgb(255, 255, 255); /* X-offset, Y-offset, blur-radius, color */
-}
+      position: absolute;
+      top: 3%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: rgba(0, 0, 0, 0.904);
+      text-align: center;
+      animation: slideIn 5s ease-out;
+      /* Add shadow to the text */
+      text-shadow: 3px 3px 5px rgb(255, 255, 255); /* X-offset, Y-offset, blur-radius, color */
+    }
 
     /* Define the animation for the text */
     @keyframes slideIn {
@@ -45,11 +45,6 @@
         transform: translateX(-50%) translateY(50px);
       }
     }
-      @media (max-width: 768px) {
-      body {
-        background-size: 100% 50%; /* Ensure background covers screen */
-        background-attachment: no-repeat; /* Make sure background scrolls with content */
-      }
 
     /* Set the image's initial state (hidden) */
     #delayedImage {
@@ -102,6 +97,23 @@
       100% {
         opacity: 0;
         transform: scale(3) rotate(360deg);
+      }
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 768px) {
+      body {
+        background-size: cover; /* Ensure background covers screen */
+        background-attachment: scroll; /* Make sure background scrolls with content */
+        background-repeat: no-repeat; /* Ensure background does not repeat */
+      }
+
+      .animated-text {
+        font-size: 1.5rem;
+      }
+
+      #delayedImage {
+        height: 40%;
       }
     }
 
