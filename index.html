@@ -9,7 +9,7 @@
     body {
       margin: 0;
       height: 100vh;
-      background-image: url('/back.jpg');
+      background-image: url('images/back.jpg'); /* Corrected relative path */
       background-size: 100% 100%;
       background-position: center;
       position: relative;
@@ -17,18 +17,18 @@
     }
 
     .animated-text {
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  color: rgba(0, 0, 0, 0.904);
-  text-align: center;
-  animation: slideIn 5s ease-out;
+      position: absolute;
+      top: 3%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: rgba(0, 0, 0, 0.904);
+      text-align: center;
+      animation: slideIn 5s ease-out;
 
-  /* Add shadow to the text */
-  text-shadow: 3px 3px 5px rgb(255, 255, 255); /* X-offset, Y-offset, blur-radius, color */
-}
+      /* Add shadow to the text */
+      text-shadow: 3px 3px 5px rgb(255, 255, 255); /* X-offset, Y-offset, blur-radius, color */
+    }
 
     /* Define the animation for the text */
     @keyframes slideIn {
@@ -110,7 +110,7 @@
   </div>
 
   <!-- Image that will appear after 5 seconds -->
-  <img id="delayedImage" src="/chelemeye.png" alt="Delayed Image">
+  <img id="delayedImage" src="images/chelemeye.png" alt="Delayed Image"> <!-- Corrected relative path -->
 
   <script>
     // Function to generate crackers continuously across the page
