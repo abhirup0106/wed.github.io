@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background with Continuous Cracker Effect and Unique Image Animation</title>
+  <style>
+    /* Set background image */
+    body {
+      margin: 0;
+      height: 100vh;
+      background-image: url('/images/back.jpg');
+      background-size: 100% 100%;
+      background-position: center;
+      position: relative;
+      overflow: hidden; /* Hide anything that goes outside the viewport */
+    }
+
+    .animated-text {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.904);
+  text-align: center;
+  animation: slideIn 5s ease-out;
+
+  /* Add shadow to the text */
+  text-shadow: 3px 3px 5px rgb(255, 255, 255); /* X-offset, Y-offset, blur-radius, color */
+}
+
+    /* Define the animation for the text */
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-50px);
+      }
+      50% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(50px);
+      }
+    }
+
+    /* Set the image's initial state (hidden) */
+    #delayedImage {
+      position: absolute;
+      height: 50%;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none; /* Initially hidden */
+      animation: uniqueImageAnimation 3s ease-out forwards;
+    }
+
+    /* Unique Image Animation */
+    @keyframes uniqueImageAnimation {
+      0% {
+        transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1) rotate(360deg);
+        opacity: 1;
+      }
+    }
+
+    /* Cracker effect */
+    .cracker {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: orange;
+      border-radius: 50%;
+      opacity: 0.9;
+      animation: explode 1s ease-out forwards;
+    }
+
+    /* Cracker explosion animation */
+    @keyframes explode {
+      0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+      50% {
+        opacity: 0.7;
+        transform: scale(2) rotate(180deg);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(3) rotate(360deg);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="animated-text">
+    <div>Save the Date</div>
+    <div>Date: 30 NOV 2025</div>
+    <div>#Event2025</div>
+  </div>
+
+  <!-- Image that will appear after 5 seconds -->
+  <img id="delayedImage" src="/images/chelemeye.png" alt="Delayed Image">
+
+  <script>
+    // Function to generate crackers continuously across the page
+    function generateCracker() {
+      const cracker = document.createElement('div');
+      cracker.classList.add('cracker');
+      
+      // Random positions for the cracker
+      const xPos = Math.random() * window.innerWidth;
+      const yPos = Math.random() * window.innerHeight;
+      cracker.style.top = `${yPos}px`;
+      cracker.style.left = `${xPos}px`;
+
+      // Random size and color for crackers
+      const randomSize = Math.random() * 20 + 10; // Size between 10px to 30px
+      cracker.style.width = `${randomSize}px`;
+      cracker.style.height = `${randomSize}px`;
+
+      // Random color for the cracker
+      const randomColor = `hsl(${Math.random() * 360}, 100%, 50%)`; // Random hue
+      cracker.style.backgroundColor = randomColor;
+
+      // Append the cracker to the body
+      document.body.appendChild(cracker);
+
+      // Remove the cracker after the animation ends (1 second)
+      setTimeout(() => {
+        cracker.remove();
+      }, 1000);
+    }
+
+    // Continuously trigger the cracker effect every 100 milliseconds
+    setInterval(generateCracker, 100); // Generate a cracker every 100ms
+
+    // Function to show the image after 5 seconds
+    setTimeout(function() {
+      document.getElementById('delayedImage').style.display = 'block';
+    }, 5000); // 5 seconds delay
+  </script>
+
+</body>
+</html>
